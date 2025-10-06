@@ -71,7 +71,7 @@ fake-news-detector/
    # Optional: Configuration
    MAX_SEARCH_RESULTS=5
    SEARCH_TIMEOUT=10
-   MODEL_NAME=gpt-3.5-turbo
+   MODEL_NAME=gpt-5-nano
    MAX_TOKENS=1000
    TEMPERATURE=0.8
    ```
