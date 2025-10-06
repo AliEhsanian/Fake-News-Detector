@@ -22,9 +22,9 @@ fake-news-detector/
 │   ├── analyzer.py         # AI analysis module
 │   ├── utils.py            # Utility functions
 │   └── images/
-│       └── banner.png      # App banner image
+│       └── fakenews_logo.jpg      # App banner image
 │
-├── .env.example            # Environment variables template
+├── .env.example           # Environment variables template
 ├── .gitignore             # Git ignore rules
 ├── requirements.txt       # Python dependencies
 ├── pyproject.toml         # Project metadata
