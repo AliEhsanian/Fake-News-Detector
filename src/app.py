@@ -4,11 +4,12 @@ Main Streamlit application for Fake News Detector
 
 
 import streamlit as st
+from base64 import b64encode
+
 from config import Config
 from scraper import GoogleSearchScraper
 from analyzer import NewsAnalyzer
 from utils import validate_input
-
 
 def main():
     """Main application function"""
@@ -18,7 +19,17 @@ def main():
         layout="wide"
     )
 
-    st.image("src/images/banner.png", use_container_width=True)
+    #st.image("src/images/fakenews_logo.jpg", use_container_width=True)
+
+    # Load and encode the image to base64
+    with open("src/images/fakenews_logo.jpg", "rb") as img_file:
+        img_data = b64encode(img_file.read()).decode("utf-8")
+
+    # Display with custom HTML/CSS for full width, reduced height, and preserved ratio (via cropping)
+    st.markdown(
+        f'<img src="data:image/png;base64,{img_data}" style="width:100%; height:35vh;">',
+        unsafe_allow_html=True
+        )
 
     st.title("🔍 Fake News Detector")
     st.markdown("Analyze news headlines and claims for credibility using AI")
