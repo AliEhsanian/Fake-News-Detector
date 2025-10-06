@@ -1,0 +1,14 @@
+[project]
+name = "fake-news-detector"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.34.0",
+    "openai>=1.50.0",
+    "beautifulsoup4>=4.12.3",
+    "requests>=2.32.3",
+    "python-dotenv>=1.0.1",
+    "google-api-python-client>=2.184.0",
+]
