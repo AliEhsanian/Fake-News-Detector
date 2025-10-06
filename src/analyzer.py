@@ -12,13 +12,13 @@ class NewsAnalyzer:
     """Analyze news claims using OpenAI's API"""
 
     def __init__(self, api_key: str, model: str = "gpt-5-nano"):
-        #self.client = OpenAI(api_key=api_key)
 
-        # if using openrouter api
-        self.client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=api_key,
-        )
+        self.client = OpenAI(api_key=api_key)
+        # If using openrouter api
+        # self.client = OpenAI(
+        # base_url="https://openrouter.ai/api/v1",
+        # api_key=api_key,
+        # )
 
         self.model = model
 
@@ -41,28 +41,30 @@ class NewsAnalyzer:
             prompt = self._create_analysis_prompt(claim, context)
 
             # Get AI analysis
+
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": self._get_system_prompt()},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000,
+                temperature=0.8,
+            )
+
+            # If using openrouter api
             # response = self.client.chat.completions.create(
-            #     model=self.model,
-            #     messages=[
+            # extra_headers={},
+            # extra_body={},
+            # model=self.model,
+            # messages=[
             #         {"role": "system", "content": self._get_system_prompt()},
             #         {"role": "user", "content": prompt}
             #     ],
-            #     max_tokens=1000
-            #     temperature=0.8,
+            #     max_tokens=1000,
+            #     temperature=0.8
             # )
 
-            # if using openrouter api
-            response = self.client.chat.completions.create(
-            extra_headers={},
-            extra_body={},
-            model=self.model,
-            messages=[
-                    {"role": "system", "content": self._get_system_prompt()},
-                    {"role": "user", "content": prompt}
-                    ],
-                    max_tokens=1000,
-                    temperature=0.8
-            )
             # Parse response
             analysis_text = response.choices[0].message.content
             return self._parse_analysis(analysis_text)
