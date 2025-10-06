@@ -113,7 +113,7 @@ You can customize the app behavior through environment variables:
 ### LLM Configuration
 
 - `OPENAI_API_KEY`: Your OpenAI API key (required)
-- `MODEL_NAME`: OpenAI model to use (default: gpt-3.5-turbo)
+- `MODEL_NAME`: OpenAI model to use (default: gpt-5-nano)
 - `TEMPERATURE`: Model temperature for analysis (0.0-1.0)
 - `MAX_TOKENS`: Maximum tokens for response (default: 1000)
 
